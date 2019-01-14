@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta content="ie=edge" http-equiv="X-UA-Compatible">
+	<title>GA Tech Bootcamp: Train Scheduler</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="jumbotron bg-dark">
+			<h1 class="text-center text-light">Employee Data Management</h1>
+            <p class="text-center text-light">A Comprehensive Directory of Employee Billable Hours</p>
+            <h4 class="text-center text-light current-time">loading...</h1>
+		</div>
+	</div>
+	<div class="container">
+		<div class="card">
+			<div class="card-header text-light bg-dark">
+				Current Train Schedule
+			</div>
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col">Train Name</th>
+						<th scope="col">Destination</th>
+						<th scope="col">First Train Time</th>
+						<th scope="col">Frequency (min)</th>
+						<th scope="col">Next Arrival</th>
+						<th scope="col">Minutes Away</th>
+					</tr>
+				</thead>
+				<tbody id="tableBody"></tbody>
+			</table>
+		</div>
+	</div><br>
+	<div class="container">
+		<div class="card">
+			<div class="card-header bg-dark text-light">
+				Add Train to Schedule
+			</div>
+			<div class="card-body">
+				<form>
+					<div class="form-group">
+                        <label for="name">Train Name</label>
+                        <input class="form-control" id="name" placeholder="Enter Train Name" type="text">
+					</div>
+					<div class="form-group">
+                        <label for="destination">Destination</label>
+                        <input class="form-control" id="destination" placeholder="Enter Train Destination" type="text">
+					</div>
+					<div class="form-group">
+                        <label for="first-train">First Train Time (HH:mm - military time)</label> 
+                        <input class="form-control" id="first-train" placeholder="Enter First Train Time" type="text">
+					</div>
+					<div class="form-group">
+                        <label for="frequency">Frequency</label> 
+                        <input class="form-control" id="frequency" placeholder="Enter Frequency in Minutes" type="text">
+					</div>
+                </form>
+                <button class="btn btn-primary mb-2" id="submit-button" type="submit">Submit</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="card">
+			<div class="card-header bg-dark text-light">
+				Edit Train or Delete from Schedule
+			</div>
+			<div class="card-body">
+				<form>
+					<div class="form-group">
+						<label for="select-train">Select Train Name</label>
+						<select class="form-control" id="select-train">
+							<option value="none">Please select train...</option>
+						</select>
+					  </div>
+					  <div class="form-group">
+							<label for="destination">Destination</label>
+							<input class="form-control" id="edit-destination" placeholder="Enter Train Destination" type="text">
+						</div>
+						<div class="form-group">
+							<label for="first-train">First Train Time (HH:mm - military time)</label> 
+							<input class="form-control" id="edit-first-train" placeholder="Enter First Train Time" type="text">
+						</div>
+						<div class="form-group">
+							<label for="frequency">Frequency</label> 
+							<input class="form-control" id="edit-frequency" placeholder="Enter Frequency in Minutes" type="text">
+						</div>
+                </form>
+				<button class="btn btn-primary mb-2" id="edit-button" type="submit">Edit Information</button>
+				<button class="btn btn-primary mb-2" id="delete-button">Delete Train</button>
+			</div>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
